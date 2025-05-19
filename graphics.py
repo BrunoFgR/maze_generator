@@ -1,5 +1,4 @@
-from tkinter import Tk, Canvas
-from tkinter.constants import BOTH
+from tkinter import Tk, Canvas, BOTH
 
 class Windows:
     def __init__(self, width, height):
