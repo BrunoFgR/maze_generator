@@ -1,8 +1,20 @@
 from cell import Cell
+import random
 import time
 
+
 class Maze:
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None):
+    def __init__(
+        self,
+        x1,
+        y1,
+        num_rows,
+        num_cols,
+        cell_size_x,
+        cell_size_y,
+        win=None,
+    ):
+        self.__cells = []
         self.__x1 = x1
         self.__y1 = y1
         self.__num_rows = num_rows
@@ -10,9 +22,9 @@ class Maze:
         self.__cell_size_x = cell_size_x
         self.__cell_size_y = cell_size_y
         self.__win = win
-        self.__cells = []
-        self.__create_cells()
 
+        self.__create_cells()
+        self.__break_entrance_and_exit()
 
     def __create_cells(self):
         for i in range(self.__num_cols):
@@ -39,3 +51,9 @@ class Maze:
             return
         self.__win.redraw()
         time.sleep(0.05)
+
+    def __break_entrance_and_exit(self):
+        self.__cells[0][0].has_top_wall = False
+        self.__draw_cell(0, 0)
+        self.__cells[self.__num_cols - 1][self.__num_rows - 1].has_bottom_wall = False
+        self.__draw_cell(self.__num_cols - 1, self.__num_rows - 1)
