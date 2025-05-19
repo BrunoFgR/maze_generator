@@ -1,6 +1,6 @@
 from tkinter import Tk, Canvas, BOTH
 
-class Windows:
+class Window:
     def __init__(self, width, height):
         self.__root = Tk()
         self.__root.title("Maze Generator")
